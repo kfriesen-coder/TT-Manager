@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const User = require("../models/User");
-const dbConfig = require("../config/dbConfig");
+const dbConfig = require("../config/database");
 
 const app = express();
 const PORT = 3000;
