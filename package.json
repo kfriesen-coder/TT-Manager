@@ -1,5 +1,23 @@
 {
   "dependencies": {
     "mongose": "^0.0.2-security"
-  }
+  },
+  "name": "tt-manager-1",
+  "version": "1.0.0",
+  "main": "testMongoConnection.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "Testdes",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kfriesen-coder/TT-Manager.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kfriesen-coder/TT-Manager/issues"
+  },
+  "homepage": "https://github.com/kfriesen-coder/TT-Manager#readme"
 }
