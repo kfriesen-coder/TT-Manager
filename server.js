@@ -1,4 +1,3 @@
-// 1. server.js (Node.js backend with Express)
 const express = require('express');
 const mongoose = require('./config/database');
 const path = require('path');
@@ -18,7 +17,7 @@ app.post('/login', async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email, password });
     if (user) {
-        res.status(200).send('Login successful!');
+        res.redirect('/default.html');
     } else {
         res.status(401).send('Invalid credentials');
     }
