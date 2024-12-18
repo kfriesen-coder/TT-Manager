@@ -34,6 +34,7 @@
 
     <!-- JavaScript to handle login logic -->
     <script>
+
         document.getElementById('loginForm').addEventListener('submit', async function (event) {
             event.preventDefault(); // Prevent page reload on form submission
 
@@ -43,26 +44,35 @@
 
             try {
                 // Send login data to the backend via POST request
-                const response = await fetch('./server/server', {
+                const response = await fetch('/api/login', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ username, password })
+                    body: JSON.stringify({ username, password }),
                 });
 
-                const result = await response.json();
-                if (response.ok) {
-                    // On successful login, redirect to index.html
-                    alert(result.message);
-                    window.location.href = 'index.html';
+                // Check if the response has a JSON body
+                if (response.headers.get('Content-Type')?.includes('application/json')) {
+                    const result = await response.json();
+                    console.log('Response:', result);
+
+                    if (response.ok) {
+                        // On successful login, redirect to index.html
+                        alert(result.message);
+                        window.location.href = 'index.html';
+                    } else {
+                        // Display error message for invalid login
+                        alert(result.message);
+                    }
                 } else {
-                    // Display error message for invalid login
-                    alert(result.message);
+                    console.error('Unexpected response format:', response);
+                    alert('Server did not return a valid JSON response.');
                 }
             } catch (err) {
                 console.error('Error:', err);
-                alert('Server error. Please try again later.');
+                alert('An error occurred while processing your request. Please try again.');
             }
         });
+
     </script>
 
     <!-- Local Bootstrap JS -->

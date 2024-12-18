@@ -8,7 +8,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/testMongoConnection.js"
+            "program": "${workspaceFolder}/testDB.js"
         }
     ]
 }

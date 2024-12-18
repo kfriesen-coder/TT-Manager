@@ -12,12 +12,13 @@ app.use(bodyParser.json());
 
 // MongoDB Connection
 mongoose
+    //.connect(dbConfig.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .connect(dbConfig.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log("MongoDB connected"))
     .catch(err => console.error("MongoDB connection error:", err));
 
 // API Endpoint: Login
-app.post("./server/server", async (req, res) => {
+app.post("/api/login", async (req, res) => {
     const { username, password } = req.body;
 
     try {

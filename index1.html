@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/template/bootstrap-5.3.3/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div id="header"></div>
+    <main>
+        <h1>Welcome to My Website</h1>
+        <p>Content for the homepage goes here.</p>
+    </main>
+    <div id="footer"></div>
+    <script>
+        document.getElementById('header').innerHTML = fetch('/template/header.html').then(res => res.text());
+        document.getElementById('footer').innerHTML = fetch('/template/footer.html').then(res => res.text());
+    </script>
+    <script src="/template/bootstrap-5.3.3/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

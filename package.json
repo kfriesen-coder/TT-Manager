@@ -12,6 +12,8 @@
   "author": "Ihr Name",
   "license": "ISC",
   "dependencies": {
-    "mongoose": "^8.9.1"
+    "dotenv": "^16.4.7",
+    "mongoose": "^8.9.1",
+    "winston": "^3.17.0"
   }
 }
