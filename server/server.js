@@ -17,8 +17,11 @@ mongoose
     .then(() => console.log("MongoDB connected"))
     .catch(err => console.error("MongoDB connection error:", err));
 
+// Start server
+app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+
 // API Endpoint: Login
-app.post("/api/login", async (req, res) => {
+app.post("/server/server", async (req, res) => {
     const { username, password } = req.body;
 
     try {
