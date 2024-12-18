@@ -17,7 +17,7 @@ mongoose
     .catch(err => console.error("MongoDB connection error:", err));
 
 // API Endpoint: Login
-app.post("/api/login", async (req, res) => {
+app.post("./server/server", async (req, res) => {
     const { username, password } = req.body;
 
     try {

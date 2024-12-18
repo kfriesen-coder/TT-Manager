@@ -1,14 +1,12 @@
 const mongoose = require("mongoose");
-
-// MongoDB Cluster connection string (mit Benutzer, Passwort und Cluster-URI)
-const dbURI = "mongodb+srv://mongoDBUser:rzf3v0aCmz4r8Nnn@cluster1.hkaoo.mongodb.net/TTManager?retryWrites=true&w=majority&appName=Cluster1";
+const dbConfig = require("./config/dbConfig"); // Pfad zur dbConfig.js
 
 async function testConnection() {
     console.log("🔄 Connecting to MongoDB Cluster...");
 
     try {
-        // Verbindung zu MongoDB herstellen
-        await mongoose.connect(dbURI);
+        // Verbindung mit der MongoDB-URI aus dbConfig.js herstellen
+        await mongoose.connect(dbConfig.mongoURI);
         console.log("✅ MongoDB connection successful!");
 
         // Status anzeigen
