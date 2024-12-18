@@ -10,5 +10,8 @@
     "start": "echo 'Öffnen Sie index.html in einem Browser'"
   },
   "author": "Ihr Name",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^8.9.1"
+  }
 }
