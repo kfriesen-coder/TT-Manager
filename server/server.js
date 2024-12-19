@@ -21,7 +21,7 @@ mongoose
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
 
 // API Endpoint: Login
-app.post("/server/server", async (req, res) => {
+app.post("/api/login", async (req, res) => {
     const { username, password } = req.body;
 
     try {
