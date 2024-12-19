@@ -44,7 +44,7 @@
 
             try {
                 // Send login data to the backend via POST request
-                const response = await fetch('/api/login', {
+                const response = await fetch('http://localhost:3000/server/server', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ username, password }),
@@ -57,13 +57,14 @@
 
                     if (response.ok) {
                         // On successful login, redirect to index.html
-                        alert(result.message);
+                        localStorage.setItem('isLoggedIn', 'true');
                         window.location.href = 'index.html';
                     } else {
                         // Display error message for invalid login
                         alert(result.message);
                     }
                 } else {
+                    console.log(username, password, response);
                     console.error('Unexpected response format:', response);
                     alert('Server did not return a valid JSON response.');
                 }
