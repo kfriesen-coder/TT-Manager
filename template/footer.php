@@ -1,6 +1,4 @@
-<footer class="container mt-5">
-        <p>&copy; 2024 My Website. All rights reserved.</p>
-    </footer>
-    <script src="/template/bootstrap-5.3.3/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+<!-- footer.html -->
+<footer class="bg-dark text-white text-center py-3 mt-5">
+    &copy; 2024 My Website. All Rights Reserved.
+</footer>

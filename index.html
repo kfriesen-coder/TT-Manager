@@ -10,6 +10,8 @@
 </head>
 
 <body>
+    <?php include 'header.html'; ?>
+
     <script>
         // Check if the user is logged in using localStorage
         const isLoggedIn = localStorage.getItem('isLoggedIn');
@@ -20,19 +22,137 @@
         }
     </script>
 
-    <!-- Navbar -->
+    <!-- Top Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">TTManager Portal</a>
+            <a class="navbar-brand" href="#">HYPER</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <form class="d-flex ms-auto me-3">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
+                </form>
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">English</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Profile</a>
+                    </li>
+                    <li><a href="#" onclick="logout()" class="btn btn-danger">Logout</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <div class="container mt-5">
-        <h1 class="text-primary">Welcome to the TTManager Portal</h1>
-        <p>Manage your tasks and projects efficiently.</p>
-        <a href="#" onclick="logout()" class="btn btn-danger">Logout</a>
+    <!-- Main Dashboard Content -->
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <!-- Analytics Cards -->
+            <div class="col-md-3 mb-4">
+                <div class="card bg-light shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Active Users</h5>
+                        <p class="card-text fs-3">233 <span class="text-success">+5.27%</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card bg-light shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Views Per Minute</h5>
+                        <p class="card-text fs-3">370 <span class="text-danger">-1.08%</span></p>
+                    </div>
+                </div>
+            </div>
+            <!-- Sessions Overview Chart -->
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Sessions Overview</h5>
+                        <canvas id="sessionsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sessions by Country -->
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Sessions by Country</h5>
+                        <canvas id="countryChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sessions by Browser -->
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Sessions by Browser</h5>
+                        <canvas id="browserChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <!-- Local Bootstrap JS -->
+    <script src="/template/bootstrap-5.3.3/js/bootstrap.bundle.min.js"></script>
+    <!-- Chart.js for Graphs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Example for Sessions Overview Chart
+        const ctx1 = document.getElementById('sessionsChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'line',
+            data: {
+                labels: ['1', '2', '3', '4', '5', '6', '7'],
+                datasets: [{
+                    label: 'Sessions',
+                    data: [10000, 20000, 15000, 30000, 25000, 35000, 40000],
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+
+        // Example for Sessions by Country Chart
+        const ctx2 = document.getElementById('countryChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: ['India', 'China', 'USA', 'Japan', 'France'],
+                datasets: [{
+                    label: 'Sessions',
+                    data: [300, 250, 200, 150, 100],
+                    backgroundColor: ['rgba(75, 192, 192, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(231, 76, 60, 0.2)', 'rgba(155, 89, 182, 0.2)'],
+                    borderColor: ['rgba(75, 192, 192, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(231, 76, 60, 1)', 'rgba(155, 89, 182, 1)'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+    </script>
 
     <!-- Logout functionality -->
     <script>
@@ -48,7 +168,7 @@
 </body>
 
 <footer>
-    <?php include 'template/footer.php'; ?>
+    <?php include '/template/footer.php'; ?>
 </footer>
 
 </html>
